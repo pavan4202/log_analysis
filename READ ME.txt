@@ -1,0 +1,44 @@
+log analysis project
+
+import psycopg2, numpy, datetime, re
+
+steps to run it: 
+step 1: to run the code first bring the virtual machine online by typing "vagrant up" and then "vagrant ssh" 
+Step 2 : cd into the vagrant 
+Step 3 : Dowload the newsdata.sql file from the following link https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip 
+Step 4 : Extract it to the same folder as Vagrant 
+Step 4 : Connect to the new database by running the following command psql -d news -f newsdata.sql 
+Step 5 : Execute the below view tables 
+Step 6 : Execute the python solution.py
+
+
+VIEWS for the project
+
+total of status with errors.
+create view errors as
+select date(time) as day, cast(count(status) as float) as errors
+from log
+where not status='200 OK'
+group by day
+order by day;
+
+total of requests ordered by day.
+create view total as
+select date(time) as day, cast(count(status) as float) as total
+from log
+group by day
+order by day;
+
+view to link the author's name and articles titles.
+create view authord as
+select title, name
+from articles, authors
+where articles.author = authors.id;
+
+view to list all the articles titles.
+create view top_three_articles as
+select articles.title, count(log.id) as views
+from articles, log
+where log.path = concat('/article/', articles.slug)
+group by articles.title
+order by views desc;

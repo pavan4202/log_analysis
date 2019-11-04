@@ -1,0 +1,16 @@
+vagrant@vagrant:/vagrant$ log aanalysis.py
+most errors were occured on :
+Jul 17, 2016
+
+These are the most viewed articles :
+'Candidate is jerk, alleges rival' '338647 Views'
+'Bears love berries, alleges bear' '253801 Views'
+'Bad things gone, say good people' '170098 Views'
+"Goats eat Google's lawn" '84906 Views'
+'Trouble for troubled troublemakers' '84810 Views'
+
+most popular Authors are the following :
+'Ursula La Multa' Decimal('507594')Views
+'Rudolf von Treppenwitz' Decimal('423457')Views
+'Anonymous Contributor' Decimal('170098')Views
+'Markoff Chaney' Decimal('84557')Views
